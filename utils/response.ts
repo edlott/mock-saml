@@ -28,24 +28,13 @@ const createResponseXML = async (params: {
   const notAfter = authDate.toISOString();
 
   const inResponseTo = samlReqId;
-  // const responseId = crypto.randomBytes(10).toString('hex');
 
   const attributeStatement = {
     '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
     '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
     'saml:Attribute': [
       {
-        '@Name': 'id',
-        '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
-        'saml:AttributeValue': {
-          '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
-          '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-          '@xsi:type': 'xs:string',
-          '#text': user.id,
-        },
-      },
-      {
-        '@Name': 'email',
+        '@Name': 'UserEmail',
         '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
         'saml:AttributeValue': {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
@@ -55,7 +44,7 @@ const createResponseXML = async (params: {
         },
       },
       {
-        '@Name': 'firstName',
+        '@Name': 'UserFirstName',
         '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
         'saml:AttributeValue': {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
@@ -65,7 +54,7 @@ const createResponseXML = async (params: {
         },
       },
       {
-        '@Name': 'lastName',
+        '@Name': 'UserLastName',
         '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
         'saml:AttributeValue': {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
@@ -74,7 +63,37 @@ const createResponseXML = async (params: {
           '#text': user.lastName,
         },
       },
-    ],
+      {
+          '@Name': 'RoleID',
+          '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified',
+          'saml:AttributeValue': {
+              '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
+              '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+              '@xsi:type': 'xs:string',
+              '#text': user.roleId,
+          },
+      },
+      {
+          '@Name': 'CASE_ID',
+          '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified',
+          'saml:AttributeValue': {
+              '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
+              '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+              '@xsi:type': 'xs:string',
+              '#text': user.caseId,
+          },
+      },
+      {
+          '@Name': 'mfaSetting',
+          '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified',
+          'saml:AttributeValue': {
+              '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
+              '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+              '@xsi:type': 'xs:string',
+              '#text': user.mfa,
+          },
+      }
+    ]
   };
 
   const nodes = {
@@ -106,8 +125,15 @@ const createResponseXML = async (params: {
         'saml:Subject': {
           'saml:NameID': {
             '@Format': 'urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified',
-            '#text': user.email,
+            '#text': user.id,
           },
+          'saml:SubjectConfirmation': {
+            '@Method': 'urn:oasis:names:tc:SAML:2.0:cm:bearer',
+            'saml:SubjectConfirmationData': {
+              '@NotOnOrAfter': notAfter,
+              '@Recipient': acsUrl
+            }
+          }
         },
         'saml:Conditions': {
           '@NotBefore': notBefore,

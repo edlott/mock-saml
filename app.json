@@ -30,6 +30,18 @@
     "NEXT_PUBLIC_GTM_ID": {
       "description": "Google Tag Manager ID.",
       "required": false
+    },
+    "DEFAULT_ACS_URL": {
+      "description": "Destination SAML endpoint",
+      "value": "https://t1.login.mymatrixx.com/sso/saml2/0oa6bd4vapz3Rdhsm1d7"
+    },
+    "DEFAULT_AUDIENCE": {
+      "description": "Audience of destination SAML endpoint",
+      "value": "https://www.okta.com/saml2/service-provider/spwgbkjnjiksdsqtxxdl"
+    },
+    "DEFAULT_RELAY_STATE": {
+      "description": "Relay state",
+      "value": "https://mypassport-demo.mymatrixx.com/loginOkta/patients/ABC/XYZ/0000111111/pending"
     }
   },
   "success_url": "/"

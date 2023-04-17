@@ -36,4 +36,20 @@ export type User = {
   email: string;
   firstName: string;
   lastName: string;
+  roleId: string;
+  caseId: string;
+  mfa: string;
+};
+
+export type IdpDetails = {
+    defaultAcsUrl: string;
+    defaultAudience: string;
+    defaultRelayState: string;
+    defaultUserName: string;
+    defaultEmail: string;
+    defaultFirstName: string;
+    defaultLastName: string;
+    defaultMfa: string;
+    defaultCaseId: string;
+    defaultRoleId: string;
 };
