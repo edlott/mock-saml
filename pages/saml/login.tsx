@@ -14,9 +14,7 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
     defaultFirstName, 
     defaultLastName, 
     defaultEmail,
-    defaultMfa,
-    defaultCaseId,
-    defaultRoleId
+    defaultMfa
   } = metadata;
   
   const [state, setState] = useState({
@@ -27,8 +25,6 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
     relayState: defaultRelayState,
     userName: defaultUserName,
     email: defaultEmail,
-    roleId: defaultRoleId,
-    caseId: defaultCaseId,
     mfa: defaultMfa
   });
 
@@ -57,9 +53,7 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
         email: state.email,
         firstName: state.firstName,
         lastName: state.lastName,
-        userName: state.userName,
-        roleId: state.roleId,
-        caseId: state.caseId
+        userName: state.userName
       }),
     });
 
@@ -96,7 +90,7 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
                         name='acsUrl'
                         id='acsUrl'
                         autoComplete='off'
-                        placeholder='https://jackson-demo.boxyhq.com/api/oauth/saml'
+                        placeholder=''
                         value={state.acsUrl}
                         onChange={handleChange}
                       />
@@ -114,7 +108,7 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
                         name='audience'
                         id='audience'
                         autoComplete='off'
-                        placeholder='https://saml.boxyhq.com'
+                        placeholder=''
                         value={state.audience}
                         onChange={handleChange}
                       />
@@ -144,7 +138,7 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
                       id='email'
                       autoComplete='off'
                       type='text'
-                      placeholder='jackson'
+                      placeholder=''
                       value={state.email}
                       onChange={handleChange}
                       className='input input-bordered'
@@ -192,7 +186,7 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
                         id='mfa'
                         autoComplete='off'
                         type='text'
-                        placeholder='DOL_CLAIMANT_SSO or DOL_CLAIMANT_SSO_PARTNER_MFA'
+                        placeholder='TEST_SSO or TEST_SSO_PARTNER_MFA'
                         value={state.mfa}
                         onChange={handleChange}
                         className='input input-bordered'
@@ -208,51 +202,13 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
                         id='userName'
                         autoComplete='off'
                         type='text'
-                        placeholder='user id'
+                        placeholder=''
                         value={state.userName}
                         onChange={handleChange}
                         className='input input-bordered'
                         title='User ID'
                     />
                   </div>
-                  <br/>
-                  <fieldset>
-                    <legend>Program Settings</legend>
-                    <div>
-                      <div className='form-control'>
-                        <label className='label'>
-                          <span className='label-text font-bold'>RoleId</span>
-                        </label>
-                        <input
-                            name='roleId'
-                            id='roleId'
-                            autoComplete='off'
-                            type='text'
-                            placeholder='11,15 for BL: 10,14,19-21 for ENERG'
-                            value={state.roleId}
-                            onChange={handleChange}
-                            className='input input-bordered'
-                            title='RoleId'
-                        />
-                      </div> 
-                      <div className='form-control'>
-                          <label className='label'>
-                          <span className='label-text font-bold'>Case ID</span>
-                          </label>
-                          <input
-                          name='caseId'
-                          id='caseId'
-                          autoComplete='off'
-                          type='text'
-                          placeholder='case id'
-                          value={state.caseId}
-                          onChange={handleChange}
-                          className='input input-bordered'
-                          title='Case ID'
-                          />
-                      </div>
-                    </div>
-                  </fieldset>
                   <button className='btn btn-primary col-span-2 block'>Sign In</button>
                 </div>
               </form>
@@ -282,9 +238,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         defaultEmail: config.defaultEmail,
         defaultFirstName: config.defaultFirstName,
         defaultLastName: config.defaultLastName,
-        defaultMfa: config.defaultMfa,
-        defaultCaseId: config.defaultCaseId,
-        defaultRoleId: config.defaultRoleId
+        defaultMfa: config.defaultMfa
     };
 
     return {

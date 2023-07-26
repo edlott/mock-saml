@@ -8,7 +8,7 @@ import saml from '@boxyhq/saml20';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const {
-      email, audience, acsUrl, relayState, roleId, caseId, firstName, lastName, mfa, userName
+      email, audience, acsUrl, relayState, firstName, lastName, mfa, userName
     } = req.body;
 
     const user: User = {
@@ -16,8 +16,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       email,
       firstName,
       lastName,
-      roleId,
-      caseId,
       mfa
     };
 

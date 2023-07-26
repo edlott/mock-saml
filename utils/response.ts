@@ -64,26 +64,6 @@ const createResponseXML = async (params: {
         },
       },
       {
-          '@Name': 'RoleID',
-          '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified',
-          'saml:AttributeValue': {
-              '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
-              '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-              '@xsi:type': 'xs:string',
-              '#text': user.roleId,
-          },
-      },
-      {
-          '@Name': 'CASE_ID',
-          '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified',
-          'saml:AttributeValue': {
-              '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
-              '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
-              '@xsi:type': 'xs:string',
-              '#text': user.caseId,
-          },
-      },
-      {
           '@Name': 'mfaSetting',
           '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified',
           'saml:AttributeValue': {

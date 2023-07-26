@@ -36,8 +36,6 @@ export type User = {
   email: string;
   firstName: string;
   lastName: string;
-  roleId: string;
-  caseId: string;
   mfa: string;
 };
 
@@ -50,6 +48,4 @@ export type IdpDetails = {
     defaultFirstName: string;
     defaultLastName: string;
     defaultMfa: string;
-    defaultCaseId: string;
-    defaultRoleId: string;
 };
