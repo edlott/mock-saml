@@ -1,8 +1,8 @@
-# Simple IDP
-This Node.js program let's you run an IDP that works with the samlbug tenant and application.
+# mock-saml
+This Node.js program let's you run an IDP that works with the samlbug tenant and saml-test application.
 
 ## Prerequisites
-You'll need a Node/npm environment on your computer to run this application.  This simplest way to
+You'll need a Node/npm environment on your computer to run this application.  The simplest way to
 do this is to use nodenv (linux, macosx) or nvm-windows (windows).  This application was developed with
 node 16.19.0.
 
@@ -17,6 +17,8 @@ npm run dev # Run this every time you want to start the application.
 * Open your browser to http://localhost:4000
 
 You'll be able to enter whatever you want for the user
-(userid, first name, last name, email) and everything will work.
+(userid, first name, last name, email) and everything will work.  The other settings
+should be used as-is.
 
-The other settings should be used as-is.
+Before you hit the 'Login' button, make sure to start the saml-test application.
+
