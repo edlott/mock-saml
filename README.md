@@ -1,65 +1,22 @@
-# Mock SAML from BoxyHQ
+# Simple IDP
+This Node.js program let's you run an IDP that works with the samlbug tenant and application.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-[![Deploy with Vercel](https://vercel.com/button)](<https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fboxyhq%2Fmock-saml&env=APP_URL,ENTITY_ID,PUBLIC_KEY,PRIVATE_KEY,NEXT_PUBLIC_GTM_ID&envDescription=APP_URL%20(Usually%20https%3A%2F%2F%3Cproject-name%3E.vercel.app)%20can%20be%20set%20after%20deployment%20from%20the%20project%20dashboard.%20Set%20to%20''%20if%20not%20applicable.&envLink=https%3A%2F%2Fgithub.com%2Fboxyhq%2Fmock-saml%2Fblob%2Fmain%2F.env.example&project-name=mock-saml>)
+## Prerequisites
+You'll need a Node/npm environment on your computer to run this application.  This simplest way to
+do this is to use nodenv (linux, macosx) or nvm-windows (windows).  This application was developed with
+node 16.19.0.
 
-Mock SAML is a free SAML 2.0 Identity Provider for testing SAML SSO integrations.
-
-Try [Mock SAML](https://mocksaml.com/), our free hosted service.
-
-## Source code visualizer
-
-[CodeSee codebase visualizer](https://app.codesee.io/maps/public/893e0610-9bfc-11ec-980d-9f320f34189e)
-
-## Install
-
-### With Docker
-
-The docker container can be found at [boxyhq/mock-saml](https://hub.docker.com/r/boxyhq/mock-saml).
-
+## Installation/Running
+To install/run, do the following:
+* Clone the repository:  https://github.com/edlott/mock-saml
+* Run the following in the root directory of this project:
 ```bash
-docker run \
-  -p 4000:4000 \
-  -e APP_URL="http://localhost:4000" \
-  -e ENTITY_ID="https://saml.example.com/entityid" \
-  -e PUBLIC_KEY="<PUBLIC_KEY>" \
-  -e PRIVATE_KEY="<PRIVATE_KEY>" \
-  -d boxyhq/mock-saml
+npm install # Run this one time
+npm run dev # Run this every time you want to start the application.
 ```
+* Open your browser to http://localhost:4000
 
-Replace `<PUBLIC_KEY>` with Base64 encoded value of public key.
-Replace `<PRIVATE_KEY>` with Base64 encoded value of private key.
+You'll be able to enter whatever you want for the user
+(userid, first name, last name, email) and everything will work.
 
-### Without Docker
-
-```
-git clone https://github.com/boxyhq/mock-saml.git
-```
-
-```
-cd mock-saml
-```
-
-Install dependencies
-
-```
-npm install
-```
-
-Update `.env` with your own keys.
-
-```
-cp .env.example .env
-```
-
-Build the Next.js app.
-
-```
-npm run build
-```
-
-Run the Mock SAML server.
-
-```
-npm run start
-```
+The other settings should be used as-is.

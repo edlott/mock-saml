@@ -34,7 +34,7 @@ const createResponseXML = async (params: {
     '@xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
     'saml:Attribute': [
       {
-        '@Name': 'UserEmail',
+        '@Name': 'email',
         '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
         'saml:AttributeValue': {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
@@ -44,7 +44,7 @@ const createResponseXML = async (params: {
         },
       },
       {
-        '@Name': 'UserFirstName',
+        '@Name': 'firstName',
         '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
         'saml:AttributeValue': {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
@@ -54,7 +54,7 @@ const createResponseXML = async (params: {
         },
       },
       {
-        '@Name': 'UserLastName',
+        '@Name': 'lastName',
         '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
         'saml:AttributeValue': {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
