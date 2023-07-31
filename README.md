@@ -12,6 +12,7 @@ To install/run, do the following:
 * Run the following in the root directory of this project:
 ```bash
 npm install # Run this one time
+npm run build # Run this once
 npm run dev # Run this every time you want to start the application.
 ```
 * Open your browser to http://localhost:4000
