@@ -2,7 +2,7 @@ import { fetchPrivateKey, fetchPublicKey } from 'utils';
 
 const appUrl = process.env.APP_URL || 'http://localhost:4000';
 const entityId = process.env.ENTITY_ID || 'https://saml.example.com/entityid';
-const defaultAcsUrl = process.env.DEFAULT_ACS_URL || '';
+const defaultAcsUrl = process.env.DEFAULT_ACS_SERVICE || '';
 const defaultAudience = process.env.DEFAULT_AUDIENCE || '';
 const defaultRelayState = process.env.DEFAULT_RELAY_STATE || '';
 const defaultUserName = process.env.DEFAULT_USERNAME || '';

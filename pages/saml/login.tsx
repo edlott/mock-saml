@@ -25,7 +25,8 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
     relayState: defaultRelayState,
     userName: defaultUserName,
     email: defaultEmail,
-    mfa: defaultMfa
+    mfa: defaultMfa,
+    domain:'t-mymatrixx.oktapreview.com'
   });
 
   const handleChange = (e: FormEvent<HTMLInputElement | HTMLSelectElement>): void => {
@@ -47,8 +48,8 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
       },
       body: JSON.stringify({
         audience: state.audience,
-        acsUrl: state.acsUrl,
-        relayState: state.relayState,
+        acsUrl: `https://${state.domain}/sso/saml2/${state.acsUrl}`,
+        relayState: `${state.relayState}?domain=${state.domain}`,
         mfa: state.mfa,
         email: state.email,
         firstName: state.firstName,
@@ -79,25 +80,37 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
               <h2 className='mb-5 text-center text-2xl font-bold text-gray-900'>SAML SSO Login</h2>
               <form onSubmit={handleSubmit}>
                 <div className='grid grid-cols-2 gap-y-1 gap-x-5'>
+                  <button className='btn btn-primary col-span-2 block'>Sign In</button>
+                  <div className='form-control'>
+                    <label className='label'>
+                      <span className='label-text font-bold'>Okta ACS Suffix</span>
+                    </label>
+                    <input
+                            type='text'
+                            className='input input-bordered'
+                            name='acsUrl'
+                            id='acsUrl'
+                            autoComplete='off'
+                            placeholder=''
+                            value={state.acsUrl}
+                    onChange={handleChange}
+                    />
+                  </div>
+                  <div className='form-control'>
+                    <label className='label'>
+                      <span className='label-text font-bold'>ACS Domain</span>
+                    </label>
+                    <select
+                            name='domain'
+                            id='domain'
+                            className='select select-bordered'
+                            onChange={handleChange}
+                            value={state.domain}>
+                    <option value='t-mymatrixx.oktapreview.com'>default</option>
+                    <option value='t1.login.mymatrixx.com'>custom</option>
+                  </select>
+                </div>
                   <div className='col-span-2'>
-                    <div className='form-control'>
-                      <label className='label'>
-                        <span className='label-text font-bold'>ACS URL</span>
-                      </label>
-                      <input
-                        type='text'
-                        className='input input-bordered'
-                        name='acsUrl'
-                        id='acsUrl'
-                        autoComplete='off'
-                        placeholder=''
-                        value={state.acsUrl}
-                        onChange={handleChange}
-                      />
-                      <label className='label'>
-                        <span className='label-text-alt'>This is where we will post the SAML Response</span>
-                      </label>
-                    </div>
                     <div className='form-control col-span-2'>
                       <label className='label'>
                         <span className='label-text font-bold'>Audience</span>
@@ -209,7 +222,6 @@ const Login: React.FC<{ metadata: IdpDetails }> = ({ metadata }) => {
                         title='User ID'
                     />
                   </div>
-                  <button className='btn btn-primary col-span-2 block'>Sign In</button>
                 </div>
               </form>
             </div>

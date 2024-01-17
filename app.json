@@ -31,9 +31,9 @@
       "description": "Google Tag Manager ID.",
       "required": false
     },
-    "DEFAULT_ACS_URL": {
-      "description": "Destination SAML endpoint",
-      "value": "https://t1.login.mymatrixx.com/sso/saml2/0oa6bd4vapz3Rdhsm1d7"
+    "DEFAULT_ACS_SERVICE": {
+      "description": "Service portion of Okta ACS url",
+      "value": "0oa6bd4vapz3Rdhsm1d7"
     },
     "DEFAULT_AUDIENCE": {
       "description": "Audience of destination SAML endpoint",
