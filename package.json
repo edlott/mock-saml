@@ -6,6 +6,7 @@
   "license": "Apache 2.0",
   "scripts": {
     "dev": "next dev -p 4000",
+    "devContainer": "next dev -p 80",
     "build": "next build",
     "start": "next start -p 4000",
     "lint": "next lint"
