@@ -4,11 +4,12 @@ This Node.js program let's you run an IDP that works with the samlbug tenant and
 ## Prerequisites
 You'll need a Node/npm environment on your computer to run this application.  The simplest way to
 do this is to use nodenv (linux, macosx) or nvm-windows (windows).  This application was developed with
-node 16.19.0.
+node 16.20.0.
 
 ## Installation/Running
 To install/run, do the following:
 * Clone the repository:  https://github.com/edlott/mock-saml
+* Switch to the samlbug branch.
 * Run the following in the root directory of this project:
 ```bash
 npm install # Run this once.
