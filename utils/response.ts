@@ -44,7 +44,7 @@ const createResponseXML = async (params: {
         }
       },
       {
-        '@Name': 'email',
+        '@Name': 'mail',
         '@NameFormat': 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic',
         'saml:AttributeValue': {
           '@xmlns:xs': 'http://www.w3.org/2001/XMLSchema',
